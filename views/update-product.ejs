@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            ATN Shop
+        </title>
+        <link rel="stylesheet" type = "text/css" href = "/stylesheet/Style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <nav>
+                    <ul id="MenuItems">
+                        <ul id="MenuItems">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/products">Products</a></li>
+                            <li><a href="/productManager">Product Manager</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="/account">Account</a></li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2>UPDATE PRODUCT</h2>
+        <form action="/<%= product._id %>" method="POST">
+            <div class="form-group">
+                <label>Product ID</label>
+                <input class="form-control" type="text" name='productId' value="<%= product._id %>" disabled>
+            </div>
+            <div class="form-group">
+                <label>Product name</label>
+                <input class="form-control" type="text" name='productName' value="<%= product.name %>">
+            </div>
+            <div class="form-group">
+                <label>Product brand</label>
+                <input class="form-control" type="text" name='productBrand'  value="<%= product.brand %>">
+            </div>
+            <input id="update-btn" class="btn btn-primary" type="submit" style="width:130px" value="SAVE">
+            <input id="update-btn" class="btn btn-secondary" type="button" style="width:130px" value="DELETE"
+                onclick="handleDeleteProduct('<%= product._id %>')">
+        </form>
+    </div>
+    <script>
+        function handleDeleteProduct(value) {
+            $.ajax({
+                url: '/' + value,
+                type: 'DELETE',
+                success: function (result) {
+                    $(location).attr('href', '/');
+                }
+            })
+        }
+    </script>
+</body>

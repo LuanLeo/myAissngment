@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Account - ATN Shop
+        </title>
+        <link rel="stylesheet" type = "text/css" href = "/stylesheet/Style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    </head>
+    <body>
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="/"><img src="Pictures/logo.png" width="245px"></a>
+                    </div>
+                    <nav>
+                        <ul id="MenuItems">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/products">Products</a></li>
+                            <li><a href="/productManager">Product Manager</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="/account">Account</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+<!-------------Account page------------->
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">
+                        <span onclick="login()">Login</span>
+                        <span onclick="register()">Register</span>
+                        <hr id="Indicator">
+                    </div>
+                    <form id="LoginForm">
+                        <input type="text" id = "username" placeholder="Username">
+                        <input type="password" id = "password"  placeholder="Password">
+                        <button type="submit" class="btn">Login</button>
+                        <a href="">Forgot password</a>
+                    </form>
+
+                    <script>
+                    </script>
+
+                    <form id="RegForm">
+                        <input type="text" autocomplete="off" id = "username" placeholder="Username">
+                        <input type="password"  autocomplete="off" id = "password"  placeholder="Password">
+                        <input type="email" autocomplete="off" id = "email" placeholder="Email">
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+
+                    <script>
+                        
+                        form.addEventListener('submit', registerUser)
+
+                        async function registerUser(event)
+                        {
+                            event.preventDefault()
+                            const username = document.getElementById('username')
+                            const password = document.getElementById('password')
+                            const email = document.getElementById('email')
+                            
+                            const result = await fetch('/view/account',{
+                                method: 'POST',
+                                headers:{
+                                    'Content-Type':'application/json'},
+                                body: JSON.sttringify({
+                                    username,
+                                    password,
+                                    email
+                                }),
+                            }).then((res) => res.json())
+
+                            console.log(result)
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </table>
+        <!----footer---->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col-1">
+                        <h3>Download Our App</h3>
+                        <p>Download App For Android and ios.</p>
+                        <div class="app-logo">
+                            <img src="Pictures/app-store.png">
+                            <img src="Pictures/play-store.png">
+                        </div>
+                    </div>
+                    <div class="footer-col-2">
+                        <img src="Pictures/logo.png">
+                    </div>
+                    <div class="footer-col-3">
+                        <h3>Link</h3>
+                        <ul>
+                            <li>Coupons</li>
+                            <li>Return Policy</li>
+                            <li>Join Affiliate</li>
+                        </ul>
+                    </div>
+                    <div class="footer-col-4">
+                        <h3>Follow us on:</h3>
+                        <ul>
+                            <li>FaceBook</li>
+                            <li>Twitter</li>
+                            <li>Instagram</li>
+                            <li>YouTube</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <p class="copyright">Copyright 2022 - ATN store</p>
+            </div>
+        </div>
+        <!-----------js for toggle form------------>
+        <script>
+            var LoginForm = document.getElementById("LoginForm");
+            var RegForm = document.getElementById("RegForm");
+            var Indicator = document.getElementById("Indicator");
+            function register(){
+                RegForm.style.transform = "translateX(0px)";
+                LoginForm.style.transform = "translateX(0px)";
+                Indicator.style.transform = "translate(100px)";
+            }
+            function login(){
+                RegForm.style.transform = "translateX(300px)";
+                LoginForm.style.transform = "translateX(300px)";
+                Indicator.style.transform = "translate(0px)";
+            }
+        </script> 
+    </body>
+</html>
